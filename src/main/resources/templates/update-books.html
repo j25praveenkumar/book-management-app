@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Update Book</title>
+    <meta charset="UTF-8">
+    <style>
+        /* Same styles as addnewBooks page */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #fdfaf6;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 500px;
+            margin: 60px auto;
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 0 15px rgba(0, 128, 0, 0.2);
+        }
+
+        h1 {
+            text-align: center;
+            color: #006400;
+        }
+
+        label {
+            display: block;
+            margin-top: 15px;
+            font-weight: bold;
+        }
+
+        input[type="text"],
+        input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+        }
+
+        button {
+            width: 100%;
+            margin-top: 25px;
+            background-color: #32cd32;
+            color: white;
+            padding: 12px;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #228b22;
+        }
+
+        a {
+            display: block;
+            margin-top: 20px;
+            text-align: center;
+            text-decoration: none;
+            color: #2e8b57;
+            font-weight: bold;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Update Book Details</h1>
+    <form th:action="@{'/update/' + ${book.id}}" th:object="${book}" method="post">
+
+
+        <lable th:for="*{id}">Book Id </lable>
+        <input type="hidden" th:field="*{id}" />
+
+
+        <label th:for="*{bookName}">Book Name:</label>
+        <input type="text" th:field="*{bookName}" required />
+
+        <label th:for="*{authorName}">Author Name:</label>
+        <input type="text" th:field="*{authorName}" required />
+
+        <label th:for="*{publishYear}">Publish Year:</label>
+        <input type="number" th:field="*{publishYear}" required />
+
+        <label th:for="*{avaStock}">Available Stock:</label>
+        <input type="number" th:field="*{avaStock}" required />
+
+        <label th:for="*{prize}">Price:</label>
+        <input type="number" th:field="*{prize}" required />
+
+        <button type="submit">Update Book</button>
+    </form>
+    <a href="/allbooks">← Back to Book List</a>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Add New Book</title>
+    <meta charset="UTF-8">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f0fff0;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 500px;
+            margin: 60px auto;
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 0 15px rgba(0, 128, 0, 0.2);
+        }
+
+        h1 {
+            text-align: center;
+            color: #2e8b57;
+            margin-bottom: 30px;
+        }
+
+        label {
+            display: block;
+            margin-top: 15px;
+            font-weight: bold;
+            color: #006400;
+        }
+
+        input[type="text"],
+        input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+        }
+
+        button {
+            width: 100%;
+            margin-top: 25px;
+            background-color: #32cd32;
+            color: white;
+            padding: 12px;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #228b22;
+        }
+
+        a {
+            display: block;
+            margin-top: 20px;
+            text-align: center;
+            text-decoration: none;
+            color: #2e8b57;
+            font-weight: bold;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Add New Book</h1>
+    <form th:action="@{/new}" th:object="${book}" method="post">
+
+        <label th:for="*{bookName}">Book Name:</label>
+        <input type="text" th:field="*{bookName}" required/>
+
+        <label th:for="*{authorName}">Author Name:</label>
+        <input type="text" th:field="*{authorName}" required/>
+
+        <label th:for="*{publishYear}">Publish Year:</label>
+        <input type="number" th:field="*{publishYear}" required/>
+
+        <label th:for="*{avaStock}">Available Stock:</label>
+        <input type="number" th:field="*{avaStock}" required/>
+
+        <label th:for="*{prize}">Price:</label>
+        <input type="number" th:field="*{prize}" required/>
+
+        <button type="submit">Add Book</button>
+    </form>
+    <a href="/allbooks">← Back to Book List</a>
+</div>
+
+</body>
+</html>

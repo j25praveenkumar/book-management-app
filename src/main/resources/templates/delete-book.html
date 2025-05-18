@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Delete Book</title>
+  <style>
+    body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background-color: #f0f9f1;
+        margin: 0;
+        padding: 0;
+    }
+
+    h1 {
+        text-align: center;
+        background-color: #e74c3c;
+        color: white;
+        padding: 25px 0;
+        margin: 0;
+        font-size: 2rem;
+    }
+
+    .container {
+        width: 50%;
+        margin: 60px auto;
+        background-color: #fff;
+        border-radius: 10px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        padding: 30px;
+        text-align: center;
+    }
+
+    .book-info {
+        font-size: 1.2rem;
+        margin: 20px 0;
+    }
+
+    .buttons {
+        margin-top: 30px;
+    }
+
+    .btn {
+        padding: 12px 24px;
+        border: none;
+        border-radius: 6px;
+        font-size: 1rem;
+        cursor: pointer;
+        margin: 0 10px;
+    }
+
+    .btn-delete {
+        background-color: #e74c3c;
+        color: white;
+    }
+
+    .btn-cancel {
+        background-color: #2ecc71;
+        color: white;
+    }
+
+    .btn:hover {
+        opacity: 0.9;
+    }
+  </style>
+</head>
+
+<body>
+
+<h1>Confirm Book Deletion</h1>
+
+<div class="container">
+  <p class="book-info">
+    Are you sure you want to delete the book<br>
+    <strong th:text="${book.bookName}"></strong> by <em th:text="${book.authorName}"></em>?
+  </p>
+
+  <form th:action="@{'/deleteBooks/' + ${book.id}}" method="post" class="buttons">
+    <button type="submit" class="btn btn-delete">Yes, Delete</button>
+    <a th:href="@{/allbooks}" class="btn btn-cancel">Cancel</a>
+  </form>
+</div>
+
+</body>
+</html>
